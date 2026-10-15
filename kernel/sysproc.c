@@ -141,3 +141,15 @@ sys_sysinfo(void) {
 
   return 0;
 }
+
+// return process information to user space
+uint64
+sys_getprocs(void) {
+  uint64 addr;
+  int max;
+
+  argaddr(0, &addr);
+  argint(1, &max);
+
+  return get_processes(addr, max);
+}
